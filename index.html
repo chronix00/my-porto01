@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frans Orlando | Jasa Web Lengkap & Profesional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?V=1.1">
+
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #0f172a;
+            --primary-color: #0062ff;
+            --accent-color: #7c3aed;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --nav-bg: rgba(255, 255, 255, 0.7);
+            --border-color: rgba(0, 98, 255, 0.1);
+            --dot-color: rgba(0, 98, 255, 0.07);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #020617;
+            --text-color: #f1f5f9;
+            --primary-color: #38bdf8;
+            --accent-color: #a855f7;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --nav-bg: rgba(2, 6, 23, 0.7);
+            --border-color: rgba(56, 189, 248, 0.1);
+            --dot-color: rgba(56, 189, 248, 0.07);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        body { background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; line-height: 1.6; position: relative; }
+
+        /* --- MOTIF BACKGROUND --- */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+            background-size: 24px 24px; z-index: -2;
+        }
+
+        .bg-deco { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+        .blob { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.2; animation: move 20s infinite alternate ease-in-out; }
+        .b1 { width: 500px; height: 500px; background: var(--primary-color); top: -10%; right: -5%; }
+        .b2 { width: 400px; height: 400px; background: var(--accent-color); bottom: -10%; left: -5%; animation-delay: -5s; }
+
+        @keyframes move { 0% { transform: translate(0, 0) rotate(0deg); } 100% { transform: translate(80px, 40px) rotate(90deg); } }
+
+        /* --- NAVBAR --- */
+        nav {
+            position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; align-items: center;
+            padding: 1.2rem 8%; background: var(--nav-bg); backdrop-filter: blur(15px);
+            z-index: 1000; border-bottom: 1px solid var(--border-color);
+        }
+        .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: -1px; }
+        .logo span { color: var(--primary-color); }
+        .nav-links { list-style: none; display: flex; align-items: center; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--text-color); font-weight: 600; font-size: 0.9rem; cursor: pointer; }
+        .nav-links a:hover { color: var(--primary-color); }
+        #theme-btn { padding: 8px 16px; border-radius: 50px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-color); cursor: pointer; font-weight: 700; }
+
+        /* --- SECTIONS --- */
+        .section { display: none; min-height: 100vh; width: 100%; padding: 120px 10% 60px; flex-direction: column; align-items: center; text-align: center; }
+        .active { display: flex; animation: fadeIn 0.6s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1rem; }
+        h1 span { background: linear-gradient(to right, var(--primary-color), var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* --- GRID & CARDS --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; width: 100%; max-width: 1200px; margin-top: 2rem; }
+        .card {
+            background: var(--card-bg); padding: 2rem; border-radius: 28px; border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px); text-align: left; cursor: pointer; position: relative; overflow: hidden;
+        }
+        .card:hover { transform: translateY(-8px); border-color: var(--primary-color); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+        .card h3 { color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.3rem; }
+        .price-tag { display: inline-block; margin-top: 1rem; padding: 4px 12px; background: rgba(34, 197, 94, 0.1); color: #22c55e; border-radius: 10px; font-weight: 800; font-size: 0.9rem; }
+
+        /* --- BUTTONS --- */
+        .btn { padding: 1rem 2.2rem; border-radius: 50px; font-weight: 800; cursor: pointer; border: none; font-size: 1rem; }
+        .btn-main { background: var(--primary-color); color: white; box-shadow: 0 8px 20px rgba(0, 98, 255, 0.2); }
+        .btn-main:hover { transform: scale(1.03); }
+
+        /* --- FORM --- */
+        .order-container { background: var(--card-bg); padding: 2.5rem; border-radius: 35px; width: 100%; max-width: 600px; border: 1px solid var(--border-color); text-align: left; }
+        input, textarea { width: 100%; padding: 1rem; margin: 0.5rem 0 1.2rem; background: rgba(0,0,0,0.03); border: 1px solid var(--border-color); border-radius: 15px; color: var(--text-color); }
+        [data-theme="dark"] input, [data-theme="dark"] textarea { background: rgba(255,255,255,0.03); }
+    </style>
+</head>
+<body>
+
+    <div class="bg-deco"><div class="blob b1"></div><div class="blob b2"></div></div>
+
+    <nav>
+        <div class="logo">FRANS<span>DEV</span></div>
+        <ul class="nav-links">
+            <li><a onclick="nav('p1')">Home</a></li>
+            <li><a onclick="nav('p2')">About</a></li>
+            <li><a onclick="nav('p3')">Services</a></li>
+            <li><button id="theme-btn" onclick="toggleMode()">✨ Tema</button></li>
+        </ul>
+    </nav>
+
+    <section id="p1" class="section active">
+        <h1>Solusi Digital<br><span>Bisnis Tanpa Ribet.</span></h1>
+        <p style="max-width: 600px; margin-bottom: 2rem; opacity: 0.8;">Bikin website profesional gak harus ngerti Coding. Terima jadi, siap pakai, dan harga bersahabat untuk UMKM.</p>
+        <div style="display: flex; gap: 1rem;">
+            <button class="btn btn-main" onclick="nav('p3')">Lihat Paket</button>
+            <button class="btn" style="background: var(--accent-bg); color: var(--primary-color);" onclick="nav('p2')">Tentang Saya</button>
+        </div>
+    </section>
+
+    <section id="p2" class="section">
+        <h2>Kenapa Harus <span>FransDev?</span></h2>
+        <p style="max-width: 700px; margin-top: 1rem; opacity: 0.8;">Saya Frans Orlando, pengembang web muda yang siap bantu Anda Go Digital.</p>
+        <div class="grid">
+            <div class="card"><h3>No Coding Needed</h3><p>Cukup berikan konsep, saya yang koding sampai website Anda online.</p></div>
+            <div class="card"><h3>Harga Terjangkau</h3><p>Kualitas tinggi standar industri dengan harga yang ramah bagi pemula.</p></div>
+        </div>
+    </section>
+
+    <section id="p3" class="section">
+        <h2>Pilih <span>Layanan Kami</span></h2>
+        <p style="margin-bottom: 1rem; opacity: 0.7;">Tersedia paket lengkap untuk setiap kebutuhan teknis Anda.</p>
+        <div class="grid">
+            <div class="card" onclick="pilih('Front-End')">
+                <h3>Front-End</h3>
+                <p>Fokus pada tampilan (UI) yang cantik, interaktif, dan responsif di HP.</p>
+                <span class="price-tag">Rp 300rb+</span>
+            </div>
+            <div class="card" onclick="pilih('Back-End')">
+                <h3>Back-End</h3>
+                <p>Pembuatan sistem database, API, dan keamanan logika website.</p>
+                <span class="price-tag">Rp 450rb+</span>
+            </div>
+            <div class="card" onclick="pilih('Full-Stack')">
+                <h3>Full-Stack</h3>
+                <p>Layanan komplit depan-belakang. Web sistem yang terintegrasi penuh.</p>
+                <span class="price-tag">Rp 800rb+</span>
+            </div>
+            <div class="card" onclick="pilih('QA (Testing)')">
+                <h3>QA Testing</h3>
+                <p>Pengecekan bug dan error agar website Anda berjalan sempurna tanpa macet.</p>
+                <span class="price-tag">Rp 250rb+</span>
+            </div>
+            <div class="card" onclick="pilih('DevOps')">
+                <h3>DevOps</h3>
+                <p>Setup hosting, domain, SSL, dan otomasi deployment server.</p>
+                <span class="price-tag">Rp 400rb+</span>
+            </div>
+            <div class="card" onclick="pilih('All-In Paket')" style="border-color: var(--primary-color); background: linear-gradient(135deg, var(--card-bg), var(--accent-bg));">
+                <h3>📦 Paket All-In</h3>
+                <p>Terima Kunci: Desain + Web + Hosting + Domain. Paling Hemat!</p>
+                <span class="price-tag" style="background: var(--primary-color); color: white;">Rp 1.500.000rb+</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="p4" class="section">
+        <div class="order-container">
+            <h2 style="margin-bottom: 0.5rem;">Konsep <span>Pemesanan</span></h2>
+            <p id="paketDipilih" style="font-weight: 800; color: var(--primary-color); margin-bottom: 1.5rem;"></p>
+            <label>Nama Anda</label>
+            <input type="text" id="nama" placeholder="Contoh: frans ">
+            <label>Tema Web</label>
+            <input type="text" id="tema" placeholder="Contoh: Toko Online Modern">
+            <label>Detail Kebutuhan</label>
+            <textarea id="detail" rows="4" placeholder="Fitur apa saja yang harus ada?"></textarea>
+            <button class="btn btn-main" style="width: 100%;" onclick="orderNow()">Lanjut Bayar via WhatsApp</button>
+        </div>
+    </section>
+
+    <script>
+        let selectedPackage = "";
+        function nav(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+        function toggleMode() {
+            const body = document.body;
+            body.hasAttribute('data-theme') ? body.removeAttribute('data-theme') : body.setAttribute('data-theme', 'dark');
+        }
+        function pilih(p) {
+            selectedPackage = p;
+            document.getElementById('paketDipilih').innerText = "Paket: " + p;
+            nav('p4');
+        }
+        function orderNow() {
+            const n = document.getElementById('nama').value;
+            const t = document.getElementById('tema').value;
+            const d = document.getElementById('detail').value;
+            if(!n || !t || !d) return alert("Isi datanya dulu ya!");
+            const msg = `Halo Frans!%0A%0A*Order Jasa Web*%0A*Layanan:* ${selectedPackage}%0A*Nama:* ${n}%0A*Tema:* ${t}%0A*Detail:* ${d}`;
+            window.open(`https://wa.me/6285353176625?text=${msg}`, '_blank');
+        }
+    </script>
+</body>
+</html>
